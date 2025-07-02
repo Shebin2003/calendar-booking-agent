@@ -4,18 +4,21 @@ from datetime import timedelta
 import os
 from dotenv import load_dotenv
 import dateparser
+import json
 
 # Load environment variables 
 load_dotenv()
 CALENDAR_ID = os.getenv("CALENDAR_ID")
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-SERVICE_ACCOUNT_FILE = 'creds/calender-project-464706-5ac77b7917de.json'
+# Load JSON from environment variable
+service_account_info = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
 
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-
-service = build('calendar', 'v3', credentials=credentials)
+# Use the correct function for a dict, not a file
+credentials = service_account.Credentials.from_service_account_info(
+    service_account_info,
+    scopes=["https://www.googleapis.com/auth/calendar"]
+)
 
 def check_availability(date_time_str):
     dt = dateparser.parse(date_time_str)
