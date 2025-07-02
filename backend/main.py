@@ -11,8 +11,15 @@ app.add_middleware(
 )
 
 @app.post("/chat")
+@app.post("/chat")
 async def chat_endpoint(request: Request):
     data = await request.json()
     user_input = data.get("message", "")
-    response = run_agent(user_input)
+    print("👉 User input:", user_input)
+
+    try:
+        response = run_agent(user_input)
+    except Exception as e:
+        response = str(e)
     return {"response": response}
+
