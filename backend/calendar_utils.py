@@ -4,11 +4,10 @@ from datetime import datetime, timedelta
 import os
 
 # Load environment variables 
-openai_key = os.getenv("OPENAI_API_KEY")
+CALENDAR_ID = os.getenv("CALENDAR_ID")
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = 'creds/service_account.json'
-CALENDAR_ID = 'a264be16f15252fab75343a4c8c0dc550b4629b8149617203a26d61f45c79e98@group.calendar.google.com'
 
 credentials = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)

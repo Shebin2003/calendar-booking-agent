@@ -1,14 +1,14 @@
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import initialize_agent, Tool
 from calendar_utils import create_event, check_availability
-from dotenv import load_dotenv
 import os
 
 # Load environment variables 
-openai_key = os.getenv("CALENDAR_ID")
+openai_key = os.getenv("OPENAI_API_KEY")
 
 # Initialize the OpenAI chat model
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+llm = ChatOpenAI(openai_api_key=openai_key, model_name="gpt-3.5-turbo", temperature=0)
+
 
 
 tools = [
