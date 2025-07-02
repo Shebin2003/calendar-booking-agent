@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables 
-load_dotenv()
+openai_key = os.getenv("CALENDAR_ID")
 
 # Initialize the OpenAI chat model
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
