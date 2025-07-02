@@ -1,6 +1,10 @@
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
+import os
+
+# Load environment variables 
+openai_key = os.getenv("OPENAI_API_KEY")
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = 'creds/service_account.json'
