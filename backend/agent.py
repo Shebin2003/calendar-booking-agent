@@ -3,6 +3,7 @@ from langchain.agents import initialize_agent, Tool
 from backend.calendar_utils import create_event, check_availability
 import os
 from dotenv import load_dotenv
+from langchain.schema import HumanMessage, AIMessage
 
 # Load environment variables 
 load_dotenv()
@@ -52,7 +53,8 @@ def run_agent(user_input):
         else:
             response_text = str(result)
 
-        chat_history.append((user_input, response_text))
+        chat_history.append(HumanMessage(content=user_input))
+        chat_history.append(AIMessage(content=response["output"]))
         return {"response": response_text}
 
     except Exception as e:
