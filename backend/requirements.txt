@@ -6,4 +6,3 @@ langchain
 google-api-python-client
 google-auth
 langchain-community
-langchain openai

@@ -2,8 +2,10 @@ from langchain.chat_models import ChatOpenAI
 from langchain.agents import initialize_agent, Tool
 from calendar_utils import create_event, check_availability
 import os
+from dotenv import load_dotenv
 
 # Load environment variables 
+load_dotenv()
 openai_key = os.getenv("OPENAI_API_KEY")
 
 # Initialize the OpenAI chat model

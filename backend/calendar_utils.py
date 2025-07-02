@@ -2,8 +2,10 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 import os
+from dotenv import load_dotenv
 
 # Load environment variables 
+load_dotenv()
 CALENDAR_ID = os.getenv("CALENDAR_ID")
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
