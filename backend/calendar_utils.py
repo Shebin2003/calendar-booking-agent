@@ -11,14 +11,18 @@ load_dotenv()
 CALENDAR_ID = os.getenv("CALENDAR_ID")
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
+
 # Load JSON from environment variable
 service_account_info = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
 
 # Use the correct function for a dict, not a file
 credentials = service_account.Credentials.from_service_account_info(
     service_account_info,
-    scopes=["https://www.googleapis.com/auth/calendar"]
+    scopes=SCOPES
 )
+
+# ✅ Build the service object (MISSING in your version)
+service = build('calendar', 'v3', credentials=credentials)
 
 def check_availability(date_time_str):
     dt = dateparser.parse(date_time_str)
