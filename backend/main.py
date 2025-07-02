@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from agent import run_agent
+from backend.agent import run_agent
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
