@@ -21,7 +21,6 @@ credentials = service_account.Credentials.from_service_account_info(
     scopes=SCOPES
 )
 
-# ✅ Build the service object (MISSING in your version)
 service = build('calendar', 'v3', credentials=credentials)
 
 def check_availability(date_time_str):

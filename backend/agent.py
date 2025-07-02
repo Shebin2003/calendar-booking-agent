@@ -39,24 +39,16 @@ agent = initialize_agent(
 chat_history = []
 
 def run_agent(user_input):
+    global chat_history
     try:
-        result = agent.invoke({
+        agent_response = agent.invoke({
             "input": user_input,
             "chat_history": chat_history
         })
+        chat_history.append(("user", user_input))
+        chat_history.append(("ai", agent_response["output"]))  # or agent_response.get("output")
 
-        # Extract only the string output
-        if isinstance(result, dict) and "output" in result:
-            response_text = result["output"]
-        elif isinstance(result, dict) and "response" in result:
-            response_text = result["response"]
-        else:
-            response_text = str(result)
-
-        chat_history.append(HumanMessage(content=user_input))
-        chat_history.append(AIMessage(content=response["output"]))
-        return {"response": response_text}
-
+        return {"response": agent_response["output"]}
     except Exception as e:
         print("Agent error:", e)
         return {"response": f"Error: {str(e)}"}
