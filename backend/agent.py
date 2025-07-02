@@ -1,6 +1,6 @@
 from langchain_groq import ChatGroq
 from langchain.agents import initialize_agent, Tool
-from calendar_utils import create_event, check_availability
+from backend.calendar_utils import create_event, check_availability
 import os
 from dotenv import load_dotenv
 
