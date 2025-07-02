@@ -10,7 +10,7 @@ load_dotenv()
 CALENDAR_ID = os.getenv("CALENDAR_ID")
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-SERVICE_ACCOUNT_FILE = 'creds/calender-project-464706-da5da40e324e.json'
+SERVICE_ACCOUNT_FILE = 'creds/calender-project-464706-5ac77b7917de.json'
 
 credentials = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)
